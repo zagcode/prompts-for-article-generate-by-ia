@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: agente-atendimento
+  ai:
+    openai:
+      # A OpenRouter fala o mesmo "idioma" da API da OpenAI: basta trocar a URL e a chave
+      api-key: ${OPENROUTER_API_KEY}
+      base-url: https://openrouter.ai/api/v1
+      chat:
+        # Troque o modelo sem mexer no código: https://openrouter.ai/models
+        model: ${OPENROUTER_MODEL:openai/gpt-4o-mini}
+        temperature: 0.2
+        custom-headers:
+          # Opcionais: identificam sua aplicação no painel da OpenRouter
+          "[HTTP-Referer]": https://github.com/zagcode/prompts-for-article-generate-by-ia
+          "[X-OpenRouter-Title]": Agente de Atendimento DIO
